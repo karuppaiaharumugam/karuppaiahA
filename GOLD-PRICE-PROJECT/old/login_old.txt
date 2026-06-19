@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-C9FivxTW23dv0SLtz0u8l/Cnko8bPh6mvry0mw7Xw7FtKj/WvzvE6I78F3zwgY0uHv5RY2zRZCOTG9ZTyT17yQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background: radial-gradient(circle, #f0c27b, #4b1248);
+            /* Radial gradient background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.9);
+            /* Semi-transparent white background */
+            max-width: 380px;
+            width: 90%;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .login-form h2 {
+            color: #4b1248;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .login-form input[type=text],
+        .login-form input[type=password],
+        .login-form input[type=submit] {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            display: inline-block;
+            border: none;
+            border-radius: 30px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            outline: none;
+        }
+
+        .login-form input[type=submit] {
+            background-color: #4b1248;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-form input[type=submit]:hover {
+            background-color: #6a1b9a;
+        }
+
+        .login-form p {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-form .links {
+            margin-top: 20px;
+        }
+
+        .login-form .links a {
+            color: #4b1248;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .login-form .links a:hover {
+            color: #6a1b9a;
+        }
+
+        /* Styling for Font Awesome icons */
+        .input-icon {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-icon input {
+            padding-left: 40px;
+            /* Space for the icon */
+        }
+
+        .input-icon .fa {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4b1248;
+            font-size: 18px;
+        }
+
+        /* Additional styling for social media icons */
+        .social-icons {
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 24px;
+            color: #4b1248;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #6a1b9a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-form">
+        <h2>Welcome Back!</h2>
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+
+            <input type="submit" value="Login">
+        </form>
+        <div class="links">
+            <p>Don't have an account? <a href="/register">Register Now</a></p>
+            <p><a href="/forgot_password.html">Forgot Password?</a></p>
+        </div>
+
+        <!-- Social media icons -->
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</body>
+
+</html>

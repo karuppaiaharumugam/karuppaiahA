@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-C9FivxTW23dv0SLtz0u8l/Cnko8bPh6mvry0mw7Xw7FtKj/WvzvE6I78F3zwgY0uHv5RY2zRZCOTG9ZTyT17yQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://example.com/background.jpg') center/cover no-repeat, linear-gradient(to right, rgba(255, 126, 95, 0.8), rgba(254, 180, 123, 0.8));
+        }
+        
+        .register-container {
+            background: rgba(255, 255, 255, 0.95); /* Semi-transparent white background */
+            max-width: 380px;
+            width: 90%;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .register-container h2 {
+            color: #4b1248;
+            margin-bottom: 30px;
+            font-size: 32px;
+        }
+        
+        .register-container input[type=text],
+        .register-container input[type=password],
+        .register-container input[type=email],
+        .register-container input[type=submit] {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            display: inline-block;
+            border: none;
+            border-radius: 30px;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            outline: none;
+        }
+        
+        .register-container input[type=submit] {
+            background-color: #4b1248;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        
+        .register-container input[type=submit]:hover {
+            background-color: #6a1b9a;
+        }
+        
+        .register-container p {
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .register-container a {
+            color: #4b1248;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .register-container a:hover {
+            color: #6a1b9a;
+        }
+        
+        /* Styling for Font Awesome icons */
+        .input-icon {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .input-icon input {
+            padding-left: 40px; /* Space for the icon */
+        }
+        
+        .input-icon .fa {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4b1248;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Create Your Account</h2>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="POST">
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            
+            <div class="input-icon">
+                <i class="fa fa-envelope"></i>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            
+            <input type="submit" value="Get Started">
+        </form>
+        <p>Already have an account? <a href="/login">Login Here</a></p>
+    </div>
+</body>
+</html>

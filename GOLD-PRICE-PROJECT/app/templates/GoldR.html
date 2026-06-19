@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Gold Price Prediction | Premium Market Analysis</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+	<!-- Shared Theme and Socket.IO -->
+	<link rel="stylesheet" href="/static/theme.css">
+	<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+	<script src="/static/theme.js"></script>
+	<style type="text/css">
+
+	</style>
+
+<body>
+	<ul class="bg-slideshow">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<div class="bg-overlay"></div>
+
+	<div class="PB15">
+		<h2 class="bg_16l PL15 PB10"> <strong>Gold (USD/OZ)</strong> </h2>
+		<div style="width:720px">
+			<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+			<script type="text/javascript">
+				new TradingView.widget({
+					"width": 1320,
+					"height": 550,
+					"symbol": "TVC:GOLD",
+					"interval": "D",
+					"timezone": "Etc/UTC",
+					"theme": "White",
+					"style": "1",
+					"locale": "en",
+					"toolbar_bg": "#f1f3f6",
+					"enable_publishing": false,
+					"withdateranges": true,
+					"hideideas": true,
+					"customer": "moneycontrol",
+
+				});
+			</script>
+		</div>
+		</br>
+		</br>
+		</br>
+		</br>
+		<!-- Gold Quotes END -->
+
+		<div class="PB15">
+			<h2 class="bg_16l PL15 PB10"> <strong>Silver (USD/OZ)</strong> </h2>
+			<div style="width:720px">
+				<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+				<script type="text/javascript">
+					new TradingView.widget({
+						"width": 1320,
+						"height": 550,
+						"symbol": "TVC:SILVER",
+						"interval": "D",
+						"timezone": "Etc/UTC",
+						"theme": "White",
+						"style": "1",
+						"locale": "en",
+						"toolbar_bg": "#f1f3f6",
+						"enable_publishing": false,
+						"withdateranges": true,
+						"hideideas": true,
+						"customer": "moneycontrol",
+
+					});
+				</script>
+			</div>
+			</br>
+			<a target="_blank" class="PL15" href="https://www.tradingview.com/symbols/TVC-SILVER/"
+				style="color: rgb(225, 178, 9); font-weight: bold;">
+				Silver chart by TradingView
+			</a>
+		</div>
+		<div class="container text-center mt-4">
+			<a href="{{ url_for('home') }}" class="btn btn-warning"
+				style="background-color: #bf953f; border: none; font-weight: bold; color: black; padding: 10px 25px; border-radius: 30px;">
+				<i class="fas fa-arrow-left"></i> Back to Dashboard
+			</a>
+		</div>
+		</body>
+
+</html>

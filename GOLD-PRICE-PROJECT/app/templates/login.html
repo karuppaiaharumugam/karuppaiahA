@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Portal | Pro Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        :root {
+            /* DARK THEME (Default) */
+            --gold: #FFD700;
+            --gold-dark: #b8860b;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --text-color: #ffffff;
+            --card-border: rgba(255, 255, 255, 0.2);
+            --input-bg: rgba(255, 255, 255, 0.1);
+            --shadow: rgba(0, 0, 0, 0.6);
+        }
+
+        /* LIGHT THEME */
+        [data-theme="light"] {
+            --glass-bg: rgba(255, 255, 255, 0.9);
+            --text-color: #1a1a1a;
+            --card-border: rgba(184, 134, 11, 0.4);
+            --input-bg: #f8f8f8;
+            --shadow: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- DYNAMIC BACKGROUND SLIDER --- */
+        #bg-slider {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-color: #000;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: -1;
+        }
+
+        /* --- ENLARGED LOGIN CARD --- */
+        .login-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            width: 95%;
+            max-width: 500px;
+            padding: 70px 60px;
+            border-radius: 35px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 50px var(--shadow);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .login-card h2 {
+            color: var(--gold);
+            font-size: 42px;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 45px;
+            font-size: 18px;
+        }
+
+        /* --- INPUTS --- */
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 18px 20px 18px 55px;
+            background: var(--input-bg);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            outline: none;
+            color: var(--text-color);
+            font-size: 18px;
+        }
+
+        .input-group input:focus {
+            border-color: var(--gold);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        /* --- SUBMIT BUTTON --- */
+        input[type=submit] {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            border: none;
+            border-radius: 15px;
+            color: #000;
+            font-weight: 800;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type=submit]:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        /* --- LINKS --- */
+        .links {
+            margin-top: 35px;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+
+        .links p {
+            margin-bottom: 10px;
+        }
+
+        .links a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- THEME TOGGLE --- */
+        .theme-switch {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: var(--gold);
+            font-size: 24px;
+            z-index: 100;
+        }
+
+        /* --- SOCIAL --- */
+        .social-icons {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            font-size: 24px;
+            opacity: 0.6;
+        }
+
+        .social-icons a:hover {
+            color: var(--gold);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="bg-slider">
+        <div class="slide active" style="background-image: url('static/gold_front_image.jpg');"></div>
+        <div class="slide" style="background-image: url('static/gold_front_image2.jpg');"></div>
+        <div class="slide" style="background-image: url('static/gold_front_image3.jpg');"></div>
+        <div class="slide" style="background-image: url('static/gold_front_image4.jpg');"></div>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="theme-switch" onclick="toggleTheme()">
+        <i id="theme-icon" class="fas fa-moon"></i>
+    </div>
+
+    <div class="login-card">
+        <h2>Gold/SIlver Price prediction</h2>
+        <p class="subtitle">predict the price of gold and silver</p>
+
+        <form method="POST">
+            <div class="input-group">
+                <i class="fa fa-user"></i>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <input type="submit" value="Sign In" href="/Home">
+        </form>
+
+        <div class="links">
+            <p>New member? <a href="/register">Join the Vault</a></p>
+            <!-- <p><a href="forgot_password.html">Forgot credentials?</a></p> -->
+        </div>
+
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <!-- <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                body.setAttribute('data-theme', 'light');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+    </script>
+</body>
+
+</html>

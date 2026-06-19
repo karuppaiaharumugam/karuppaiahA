@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gold Price Live</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/theme.css">
+	<script src="/static/theme.js"></script>
+	<style>
+		/* (Styles omitted for brevity, keep your existing internal CSS) */
+		body {
+			font-family: 'Segoe UI', sans-serif;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0;
+		}
+
+
+
+		.card {
+			padding: 30px;
+			border-radius: 20px;
+			background: rgba(20, 20, 20, 0.7);
+			border: 1px solid #bf953f;
+			color: white;
+			text-align: center;
+		}
+
+		.btn-back {
+			margin-top: 20px;
+			padding: 10px 25px;
+			border-radius: 30px;
+			border: 2px solid #bf953f;
+			color: #bf953f;
+			background: transparent;
+			text-decoration: none;
+			display: inline-block;
+		}
+
+		.btn-back:hover {
+			background: #bf953f;
+			color: #000;
+		}
+	</style>
+</head>
+
+<body class="dark">
+	<ul class="bg-slideshow">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<div class="bg-overlay"></div>
+
+	<div class="container" style="max-width: 500px; z-index: 1;">
+		<h1 style="color: #FFD700; text-align: center;">Market Gold Price</h1>
+		<div class="card">
+			<p>Live Spot Rate (USD)</p>
+			<div id="gold-quote-container">
+				<script src="https://www.gold-quote.net/syndicate_usd.php?lang=en"></script>
+			</div>
+		</div>
+		<div class="text-center">
+			<a href="{{ url_for('home') }}" class="btn-back">Back to Dashboard</a>
+		</div>
+	</div>
+</body>
+
+</html>

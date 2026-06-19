@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Gold Price Prediction | Premium Market Analysis</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/theme.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/static/theme.js"></script>
+    <style>
+        /* (Styles omitted for brevity, keep your existing internal CSS) */
+        :root {
+            --gold-primary: #D4AF37;
+            --glass-bg: rgba(0, 0, 0, 0.78);
+            --text-color: #ffffff;
+        }
+
+
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid var(--gold-primary);
+        }
+
+        .hero-text-box {
+            background: var(--glass-bg);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: var(--text-color);
+        }
+
+        .btn-predict {
+            background: linear-gradient(45deg, #BF953F, #FCF6BA, #AA771C);
+            color: #000;
+            font-weight: 700;
+            border-radius: 15px;
+            padding: 15px 30px;
+        }
+
+        .btn-rate {
+            border: 2px solid var(--gold-primary);
+            color: var(--gold-primary);
+            border-radius: 15px;
+            padding: 15px 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="bg-slideshow">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="bg-overlay"></div>
+    <div class="container">
+        <!-- <a href="#" class="navbar-brand" style="color: var(--gold-primary); font-weight: 800;">GOLD PREDICT</a> -->
+        <div class="collapse navbar-collapse" id="navCollapse">
+            <div class="navbar-nav ml-auto">
+                <a href="{{ url_for('home') }}" class="nav-link" style="color: #facc15;"><b>Dashboard</b></a>
+                <a href="{{ url_for('market_rates') }}" class="nav-link" style="color: #facc15;"><b>Market Rates
+                        (Gold)</b></a>
+                <a href="{{ url_for('goldr') }}" class="nav-link" style="color: #facc15;"><b>Gold Charts
+                        (GoldR)</b></a>
+            </div>
+        </div>
+    </div>
+    </nav>
+    <section class="hero" style="min-height: 100vh; display: flex; align-items: center;">
+        <div class="container">
+            <div class="hero-text-box">
+                <h2 style="color: var(--gold-primary);">Gold Price Prediction</h2>
+                <p>Use our advanced predictive engine to forecast gold price movements.</p>
+                <div class="hero-btn-group mt-4" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <form action="/index" method="post" style="display: inline;">
+                        <button type="submit" class="btn btn-predict">Start Prediction (Index)</button>
+                    </form>
+                    <a href="{{ url_for('market_rates') }}" class="btn btn-rate">Live Market Rates (Gold)</a>
+                    <a href="{{ url_for('goldr') }}" class="btn btn-rate"
+                        style="background: rgba(212, 175, 55, 0.2);">View Charts (GoldR)</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
